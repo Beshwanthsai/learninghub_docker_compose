@@ -13,7 +13,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: Beshu@2107
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
-      - "8083:8083"  # backend mapped to host 8081
+      - "8083:8083"  # backend
 
   frontend:
     build:
@@ -22,6 +22,6 @@ services:
     container_name: learninghub-frontend
     restart: always
     ports:
-      - "9090:8080"  # frontend Tomcat mapped to host 9090
+      - "9090:8080"  # frontend Tomcat
     environment:
-      VITE_API_URL: http://54.157.251.142:8083/learninghub
+      VITE_API_URL: http://54.157.251.142:8083
