@@ -24,4 +24,4 @@ services:
     ports:
       - "9090:8080"  # frontend Tomcat mapped to host 9090
     environment:
-      VITE_API_URL: http://54.157.251.142:8081/learninghub
+      VITE_API_URL: http://54.157.251.142:8083/learninghub
