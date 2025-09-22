@@ -5,7 +5,7 @@ WORKDIR /app
 # Install git
 RUN apt-get update && apt-get install -y git
 
-# Clone frontend repo
+# Clone frontend 
 RUN git clone https://github.com/Beshwanthsai/LearningHub.git .
 
 # Install dependencies and build
