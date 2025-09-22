@@ -28,7 +28,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SERVER_ADDRESS: 0.0.0.0   
     ports:
-      - "8083:8083"  # backend
+      - "8083:8080"  # backend
 
   frontend:
     build:
