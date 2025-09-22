@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: Beshu@2107
       MYSQL_DATABASE: learninghub
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
 
