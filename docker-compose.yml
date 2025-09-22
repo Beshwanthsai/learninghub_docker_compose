@@ -26,10 +26,9 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Beshu@2107
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SERVER_PORT: 8083
       SERVER_ADDRESS: 0.0.0.0   
     ports:
-      - "8083:8083"
+      - "8083:8083"  # backend
 
   frontend:
     build:
@@ -39,10 +38,10 @@ services:
     restart: always
     depends_on:
       - backend
-    environment:
-      VITE_API_URL: http://3.87.77.146:8083
     ports:
-      - "9090:8080"
+      - "9090:8080"  # frontend
+    environment:
+      VITE_API_URL: http://backend:8083
 
 volumes:
   db_data:
