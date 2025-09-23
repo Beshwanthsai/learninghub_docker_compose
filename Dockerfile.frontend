@@ -1,4 +1,4 @@
-# Stage 1: Build React + Vite ap
+# Stage 1: Build React + Vite a
 FROM node:18 AS build-stage
 
 WORKDIR /app
