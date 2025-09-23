@@ -43,7 +43,7 @@ services:
     environment:
       VITE_API_URL: http://backend:8080
     ports:
-      - "9090:8080"
+      - "9090:80"
 
 volumes:
   db_data:
