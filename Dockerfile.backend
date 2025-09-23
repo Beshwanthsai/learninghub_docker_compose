@@ -1,30 +1,23 @@
-# Stage 1: Build with Maven and Java 21
-FROM maven:3.9.6-eclipse-temurin-21 AS build
-
+# Stage 1: Build with Maven
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Install git to allow repo cloning
-RUN apt-get update && apt-get install -y git
+# Copy pom and src
+COPY pom.xml .
+COPY src ./src
 
-# Clone your backend repo
-RUN git clone https://github.com/Beshwanthsai/Learning_Hub_Backend.git .
-
-# Build the project
+# Build project
 RUN mvn clean package -DskipTests
 
-# Copy the generated JAR to a known path
-RUN cp target/*.jar /app/LearningHub.jar
-
-# Stage 2: Runtime stage with Java 21 JRE
-FROM eclipse-temurin:21-jre
-
+# Stage 2: Runtime with JRE
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# Copy the JAR from the build stage
-COPY --from=build /app/LearningHub.jar ./LearningHub.jar
+# Copy the JAR
+COPY --from=build /app/target/*.jar ./LearningHub.jar
 
-# Expose the port your Spring Boot app uses
+# Expose Spring Boot port
 EXPOSE 8080
 
-# Run the Spring Boot application
+# Run the JAR
 CMD ["java", "-jar", "LearningHub.jar"]
