@@ -12,14 +12,18 @@ RUN git clone https://github.com/Beshwanthsai/Learning_Hub_Backend.git .
 # Build the project
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the JAR
+# Copy the generated JAR to a known path
+RUN cp target/*.jar /app/LearningHub.jar
+
+# Stage 2: Runtime stage with Java 21 JRE
 FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
 # Copy the JAR from the build stage
-COPY --from=build /app/target/LearningHub-0.0.1-SNAPSHOT.jar ./LearningHub.jar
+COPY --from=build /app/LearningHub.jar ./LearningHub.jar
 
+# Expose the port your Spring Boot app uses
 EXPOSE 8080
 
 # Run the Spring Boot application
