@@ -41,7 +41,7 @@ services:
     depends_on:
       - backend
     environment:
-      VITE_API_URL: http://backend:8080
+      VITE_API_URL: http://54.89.231.208:8083/back1
     ports:
       - "9090:80"
 
